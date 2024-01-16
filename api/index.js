@@ -17,9 +17,10 @@ app.listen(port, () => {
 
 app.use(express.json());
 
+app.get('/', async (req, res, next) => {
+    res.status(200).json("Server Running!")
+})
 app.post('/contact', async (req, res, next) => {
-    console.log(req.body)
-    res.status(200).json("Message sent!");
     try {
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
