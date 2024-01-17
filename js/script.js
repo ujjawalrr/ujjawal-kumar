@@ -32,11 +32,15 @@ var swiper = new Swiper(".slide-content", {
 });
 
 let contactBtn = document.getElementById('contactBtn');
+let name = document.getElementById('name').value;
+let email = document.getElementById('email').value;
+let message = document.getElementById('message').value;
+var modal = document.getElementById("myModal");
+let modalMsg = document.getElementById("modalMsg");
+let closeBtn = document.getElementById('closeBtn');
+var span = document.getElementsByClassName("close")[0];
 async function handleFormSubmit(e) {
   e.preventDefault();
-  let name = document.getElementById('name').value;
-  let email = document.getElementById('email').value;
-  let message = document.getElementById('message').value;
   try {
     const res = await fetch('https://ujjawal-kumar.onrender.com/contact', {
       method: "POST",
@@ -46,9 +50,55 @@ async function handleFormSubmit(e) {
       body: JSON.stringify({ name, email, message }),
     })
     const data = await res.json();
-    alert(data);
+    modalMsg.innerHTML = data;
+    modal.style.display = "block";
   } catch (error) {
-    alert(error);
+    modalMsg.innerHTML = "Can't send now! Please try again later!";
+    modal.style.display = "block";
   }
 }
 contactBtn.addEventListener('click', handleFormSubmit);
+closeBtn.onclick = function () {
+  modal.style.display = "none";
+}
+span.onclick = function () {
+  modal.style.display = "none";
+}
+
+let navMenu = document.getElementById('navMenu');
+let ul = document.getElementsByTagName('ul')[0];
+navMenu.onclick = function () {
+  ul.classList.toggle('leftToggle');
+  if (navMenu.innerHTML == "close") {
+    navMenu.innerHTML = "menu";
+  }
+  else {
+    navMenu.innerHTML = "close";
+  }
+}
+
+
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+  if(event.target != navMenu  && ul.classList.contains('leftToggle')){
+    ul.classList.remove('leftToggle');
+    if (navMenu.innerHTML == "close") {
+      navMenu.innerHTML = "menu";
+    }
+    else {
+      navMenu.innerHTML = "close";
+    }
+  }
+  // console.log()
+  // if(){
+  //   
+  // }
+  // else{
+  //   check.value = "on";
+  //   ul.style.left = "0";
+  //   navMenu.innerHTML = "close";
+  // }
+}
