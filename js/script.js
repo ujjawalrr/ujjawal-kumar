@@ -31,6 +31,7 @@ var swiper = new Swiper(".slide-content", {
   },
 });
 
+let contactForm = document.getElementById('contactForm');
 let contactBtn = document.getElementById('contactBtn');
 let name = document.getElementById('name').value;
 let email = document.getElementById('email').value;
@@ -39,8 +40,10 @@ var modal = document.getElementById("myModal");
 let modalMsg = document.getElementById("modalMsg");
 let closeBtn = document.getElementById('closeBtn');
 var span = document.getElementsByClassName("close")[0];
+
 async function handleFormSubmit(e) {
   e.preventDefault();
+  contactBtn.innerHTML = "Sending";
   try {
     const res = await fetch('https://ujjawal-kumar.onrender.com/contact', {
       method: "POST",
@@ -50,9 +53,12 @@ async function handleFormSubmit(e) {
       body: JSON.stringify({ name, email, message }),
     })
     const data = await res.json();
+    contactForm.reset();
+    contactBtn.innerHTML = "Send";
     modalMsg.innerHTML = data;
     modal.style.display = "block";
   } catch (error) {
+    contactBtn.innerHTML = "Send";
     modalMsg.innerHTML = "Can't send now! Please try again later!";
     modal.style.display = "block";
   }
@@ -81,7 +87,7 @@ window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-  if(event.target != navMenu  && ul.classList.contains('leftToggle')){
+  if (event.target != navMenu && ul.classList.contains('leftToggle')) {
     ul.classList.remove('leftToggle');
     if (navMenu.innerHTML == "close") {
       navMenu.innerHTML = "menu";
