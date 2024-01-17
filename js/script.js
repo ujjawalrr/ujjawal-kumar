@@ -33,15 +33,15 @@ var swiper = new Swiper(".slide-content", {
 
 let contactForm = document.getElementById('contactForm');
 let contactBtn = document.getElementById('contactBtn');
-let name = document.getElementById('name').value;
-let email = document.getElementById('email').value;
-let message = document.getElementById('message').value;
 var modal = document.getElementById("myModal");
 let modalMsg = document.getElementById("modalMsg");
 let closeBtn = document.getElementById('closeBtn');
 var span = document.getElementsByClassName("close")[0];
 
 async function handleFormSubmit(e) {
+  let name = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let message = document.getElementById('message').value;
   e.preventDefault();
   contactBtn.innerHTML = "Sending";
   try {
