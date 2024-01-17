@@ -77,8 +77,6 @@ navMenu.onclick = function () {
   }
 }
 
-
-
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -92,13 +90,4 @@ window.onclick = function (event) {
       navMenu.innerHTML = "close";
     }
   }
-  // console.log()
-  // if(){
-  //   
-  // }
-  // else{
-  //   check.value = "on";
-  //   ul.style.left = "0";
-  //   navMenu.innerHTML = "close";
-  // }
 }

@@ -7,6 +7,7 @@
     --colortwitterlogo: #20beff;
     --colorbluelogo: #00cfce;
     --colordarkradium: #0e2334;
+    --colorlightnavbg: rgb(230, 248, 255);
 }
 
 html {
@@ -42,7 +43,7 @@ body {
 
 /*--------------------------- NAVBAR ----------------------------------------*/
 nav {
-    background-color: rgb(230, 248, 255);
+    background-color: var(--colorlightnavbg);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,6 +58,7 @@ nav {
 }
 
 .logo {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -78,9 +80,12 @@ nav {
     color: white;
 }
 
-.logoTxt {
+.logoTxt span:first-child{
     color: var(--colordarkblue);
-    font-family: 'Cedarville Cursive', cursive;
+    font-weight: 600;
+}
+.logoTxt span:last-child{
+    color: rgb(65, 65, 65);
     font-weight: 600;
 }
 
@@ -185,7 +190,7 @@ section>h1 {
 
 .modal-header {
     padding: 20px 16px;
-    background-color: rgb(230, 248, 255);
+    background-color: var(--colorlightnavbg);
     color: #0693e3;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -198,6 +203,7 @@ section>h1 {
 /*------------------------------------------- ABOUT ----------------------------------------*/
 .aboutContainer {
     position: relative;
+    color: rgb(37, 33, 33);
     /* color: rgb(43, 85, 109); */
 }
 
@@ -423,6 +429,7 @@ section>h1 {
     font-size: 0.9rem;
     transition: all 0.4s;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .formBtn:hover {
@@ -443,7 +450,7 @@ footer{
     height: 60px;
     width: 100vw;
     object-fit: cover;
-    opacity: 0.9;
+    /* opacity: 0.9; */
 }
 .footerContent{
     position: absolute;
@@ -453,7 +460,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 .footerContent a{
     text-decoration: none;
@@ -462,14 +469,19 @@ footer{
     align-items: center;
     gap: 5px;
     color: rgb(255, 255, 255);
+    font-size: 0.9rem;
 }
 .footerLogo{
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
     padding: 5px;
     background-color: #FFF;
     border-radius: 50%;
+}
+.footerLogo:hover{
+    background-color: var(--colorlightnavbg);
+    padding: 4px;
 }
 .backToTop{
     position: fixed;
@@ -477,8 +489,16 @@ footer{
     right: 20px;
     z-index: 1000;
 }
+.backToTop:hover{
+    bottom: 62px;
+    right: 17px;
+}
 .backToTop img{
     border-radius: 50%;
+    width: 74px;
+    height: 74px;
+}
+.backToTop:hover img{
     width: 80px;
     height: 80px;
 }
