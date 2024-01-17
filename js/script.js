@@ -38,7 +38,7 @@ async function handleFormSubmit(e) {
   let email = document.getElementById('email').value;
   let message = document.getElementById('message').value;
   try {
-    const res = await fetch('https://ujjawal-kumar.onrender.com', {
+    const res = await fetch('https://ujjawal-kumar.onrender.com/contact', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
